@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * and adjust checkout details. Applies to Express Checkout and Payments Standard payment methods.
  */
 public class PaypalExpressTokenQuery extends AbstractQuery<PaypalExpressTokenQuery> {
-    PaypalExpressTokenQuery(StringBuilder _queryBuilder) {
+    public PaypalExpressTokenQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

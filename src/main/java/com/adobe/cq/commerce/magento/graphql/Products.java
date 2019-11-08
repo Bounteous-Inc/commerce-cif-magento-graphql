@@ -31,6 +31,13 @@ public class Products extends AbstractResponse<Products> {
     }
 
     public Products(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public Products(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -42,7 +49,7 @@ public class Products extends AbstractResponse<Products> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             LayerFilter optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new LayerFilter(jsonAsObject(element1, key));
+                                optional2 = new LayerFilter(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -63,7 +70,7 @@ public class Products extends AbstractResponse<Products> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -80,7 +87,7 @@ public class Products extends AbstractResponse<Products> {
                 case "page_info": {
                     SearchResultPageInfo optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SearchResultPageInfo(jsonAsObject(field.getValue(), key));
+                        optional1 = new SearchResultPageInfo(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -91,7 +98,7 @@ public class Products extends AbstractResponse<Products> {
                 case "sort_fields": {
                     SortFields optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SortFields(jsonAsObject(field.getValue(), key));
+                        optional1 = new SortFields(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

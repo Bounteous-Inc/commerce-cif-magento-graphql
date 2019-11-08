@@ -31,6 +31,13 @@ public class Price extends AbstractResponse<Price> {
     }
 
     public Price(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public Price(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -42,7 +49,7 @@ public class Price extends AbstractResponse<Price> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             PriceAdjustment optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new PriceAdjustment(jsonAsObject(element1, key));
+                                optional2 = new PriceAdjustment(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -59,7 +66,7 @@ public class Price extends AbstractResponse<Price> {
                 case "amount": {
                     Money optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Money(jsonAsObject(field.getValue(), key));
+                        optional1 = new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * ConfigurableProductOptionsValues contains the index number assigned to a configurable product option
  */
 public class ConfigurableProductOptionsValuesQuery extends AbstractQuery<ConfigurableProductOptionsValuesQuery> {
-    ConfigurableProductOptionsValuesQuery(StringBuilder _queryBuilder) {
+    public ConfigurableProductOptionsValuesQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * DownloadableProductLinks defines characteristics of a downloadable product
  */
 public class DownloadableProductLinksQuery extends AbstractQuery<DownloadableProductLinksQuery> {
-    DownloadableProductLinksQuery(StringBuilder _queryBuilder) {
+    public DownloadableProductLinksQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

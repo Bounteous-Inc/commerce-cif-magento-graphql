@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * part of a customizable option.
  */
 public class CustomizableCheckboxOptionQuery extends AbstractQuery<CustomizableCheckboxOptionQuery> {
-    CustomizableCheckboxOptionQuery(StringBuilder _queryBuilder) {
+    public CustomizableCheckboxOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

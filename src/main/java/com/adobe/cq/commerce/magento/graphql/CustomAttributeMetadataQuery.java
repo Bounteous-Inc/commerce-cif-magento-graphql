@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * CustomAttributeMetadata defines an array of attribute_codes and entity_types
  */
 public class CustomAttributeMetadataQuery extends AbstractQuery<CustomAttributeMetadataQuery> {
-    CustomAttributeMetadataQuery(StringBuilder _queryBuilder) {
+    public CustomAttributeMetadataQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

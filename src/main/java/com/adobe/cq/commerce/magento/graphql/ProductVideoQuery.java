@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Contains information about a product video.
  */
 public class ProductVideoQuery extends AbstractQuery<ProductVideoQuery> {
-    ProductVideoQuery(StringBuilder _queryBuilder) {
+    public ProductVideoQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

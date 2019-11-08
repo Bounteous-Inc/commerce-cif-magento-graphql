@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * product.
  */
 public class MediaGalleryEntryQuery extends AbstractQuery<MediaGalleryEntryQuery> {
-    MediaGalleryEntryQuery(StringBuilder _queryBuilder) {
+    public MediaGalleryEntryQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

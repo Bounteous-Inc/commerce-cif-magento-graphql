@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class HostedProUrlQuery extends AbstractQuery<HostedProUrlQuery> {
-    HostedProUrlQuery(StringBuilder _queryBuilder) {
+    public HostedProUrlQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

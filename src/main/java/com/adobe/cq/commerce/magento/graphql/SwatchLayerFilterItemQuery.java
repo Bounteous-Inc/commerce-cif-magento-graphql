@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SwatchLayerFilterItemQuery extends AbstractQuery<SwatchLayerFilterItemQuery> {
-    SwatchLayerFilterItemQuery(StringBuilder _queryBuilder) {
+    public SwatchLayerFilterItemQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

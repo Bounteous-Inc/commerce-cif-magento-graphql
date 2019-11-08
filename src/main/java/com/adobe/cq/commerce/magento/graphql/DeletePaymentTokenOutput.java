@@ -29,6 +29,13 @@ public class DeletePaymentTokenOutput extends AbstractResponse<DeletePaymentToke
     }
 
     public DeletePaymentTokenOutput(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public DeletePaymentTokenOutput(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -36,7 +43,7 @@ public class DeletePaymentTokenOutput extends AbstractResponse<DeletePaymentToke
                 case "customerPaymentTokens": {
                     CustomerPaymentTokens optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerPaymentTokens(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerPaymentTokens(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

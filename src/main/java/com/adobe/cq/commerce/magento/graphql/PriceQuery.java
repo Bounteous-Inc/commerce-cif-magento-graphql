@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The Price object defines the price of a product as well as any tax-related adjustments.
  */
 public class PriceQuery extends AbstractQuery<PriceQuery> {
-    PriceQuery(StringBuilder _queryBuilder) {
+    public PriceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

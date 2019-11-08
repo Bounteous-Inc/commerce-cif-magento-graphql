@@ -31,6 +31,13 @@ public class Cart extends AbstractResponse<Cart> {
     }
 
     public Cart(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public Cart(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -38,7 +45,7 @@ public class Cart extends AbstractResponse<Cart> {
                 case "applied_coupon": {
                     AppliedCoupon optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new AppliedCoupon(jsonAsObject(field.getValue(), key));
+                        optional1 = new AppliedCoupon(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -53,7 +60,7 @@ public class Cart extends AbstractResponse<Cart> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             AvailablePaymentMethod optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new AvailablePaymentMethod(jsonAsObject(element1, key));
+                                optional2 = new AvailablePaymentMethod(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -68,7 +75,7 @@ public class Cart extends AbstractResponse<Cart> {
                 }
 
                 case "billing_address": {
-                    responseData.put(key, new BillingCartAddress(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new BillingCartAddress(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }
@@ -91,7 +98,7 @@ public class Cart extends AbstractResponse<Cart> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CartItemInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownCartItemInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownCartItemInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -108,7 +115,7 @@ public class Cart extends AbstractResponse<Cart> {
                 case "prices": {
                     CartPrices optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CartPrices(jsonAsObject(field.getValue(), key));
+                        optional1 = new CartPrices(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -119,7 +126,7 @@ public class Cart extends AbstractResponse<Cart> {
                 case "selected_payment_method": {
                     SelectedPaymentMethod optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SelectedPaymentMethod(jsonAsObject(field.getValue(), key));
+                        optional1 = new SelectedPaymentMethod(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -132,7 +139,7 @@ public class Cart extends AbstractResponse<Cart> {
                     for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                         ShippingCartAddress optional2 = null;
                         if (!element1.isJsonNull()) {
-                            optional2 = new ShippingCartAddress(jsonAsObject(element1, key));
+                            optional2 = new ShippingCartAddress(jsonAsObject(element1, key), ignoreUnknownFields);
                         }
 
                         list1.add(optional2);

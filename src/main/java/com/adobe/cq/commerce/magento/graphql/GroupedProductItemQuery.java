@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * GroupedProductItem contains information about an individual grouped product item
  */
 public class GroupedProductItemQuery extends AbstractQuery<GroupedProductItemQuery> {
-    GroupedProductItemQuery(StringBuilder _queryBuilder) {
+    public GroupedProductItemQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

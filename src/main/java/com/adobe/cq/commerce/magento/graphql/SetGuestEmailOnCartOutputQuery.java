@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SetGuestEmailOnCartOutputQuery extends AbstractQuery<SetGuestEmailOnCartOutputQuery> {
-    SetGuestEmailOnCartOutputQuery(StringBuilder _queryBuilder) {
+    public SetGuestEmailOnCartOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

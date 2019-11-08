@@ -31,6 +31,13 @@ public class SelectedCustomizableOption extends AbstractResponse<SelectedCustomi
     }
 
     public SelectedCustomizableOption(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public SelectedCustomizableOption(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -64,7 +71,7 @@ public class SelectedCustomizableOption extends AbstractResponse<SelectedCustomi
                     for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                         SelectedCustomizableOptionValue optional2 = null;
                         if (!element1.isJsonNull()) {
-                            optional2 = new SelectedCustomizableOptionValue(jsonAsObject(element1, key));
+                            optional2 = new SelectedCustomizableOptionValue(jsonAsObject(element1, key), ignoreUnknownFields);
                         }
 
                         list1.add(optional2);

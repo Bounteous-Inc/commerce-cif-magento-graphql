@@ -31,6 +31,13 @@ public class UnknownCustomizableProductInterface extends AbstractResponse<Unknow
     }
 
     public UnknownCustomizableProductInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownCustomizableProductInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -42,7 +49,7 @@ public class UnknownCustomizableProductInterface extends AbstractResponse<Unknow
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CustomizableOptionInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownCustomizableOptionInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownCustomizableOptionInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -69,30 +76,34 @@ public class UnknownCustomizableProductInterface extends AbstractResponse<Unknow
     }
 
     public static CustomizableProductInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static CustomizableProductInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "BundleProduct": {
-                return new BundleProduct(fields);
+                return new BundleProduct(fields, ignoreUnknownFields);
             }
 
             case "ConfigurableProduct": {
-                return new ConfigurableProduct(fields);
+                return new ConfigurableProduct(fields, ignoreUnknownFields);
             }
 
             case "DownloadableProduct": {
-                return new DownloadableProduct(fields);
+                return new DownloadableProduct(fields, ignoreUnknownFields);
             }
 
             case "SimpleProduct": {
-                return new SimpleProduct(fields);
+                return new SimpleProduct(fields, ignoreUnknownFields);
             }
 
             case "VirtualProduct": {
-                return new VirtualProduct(fields);
+                return new VirtualProduct(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownCustomizableProductInterface(fields);
+                return new UnknownCustomizableProductInterface(fields, ignoreUnknownFields);
             }
         }
     }

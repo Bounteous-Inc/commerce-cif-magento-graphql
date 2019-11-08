@@ -29,6 +29,13 @@ public class UnknownPhysicalProductInterface extends AbstractResponse<UnknownPhy
     }
 
     public UnknownPhysicalProductInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownPhysicalProductInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -57,26 +64,30 @@ public class UnknownPhysicalProductInterface extends AbstractResponse<UnknownPhy
     }
 
     public static PhysicalProductInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static PhysicalProductInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "BundleProduct": {
-                return new BundleProduct(fields);
+                return new BundleProduct(fields, ignoreUnknownFields);
             }
 
             case "ConfigurableProduct": {
-                return new ConfigurableProduct(fields);
+                return new ConfigurableProduct(fields, ignoreUnknownFields);
             }
 
             case "GroupedProduct": {
-                return new GroupedProduct(fields);
+                return new GroupedProduct(fields, ignoreUnknownFields);
             }
 
             case "SimpleProduct": {
-                return new SimpleProduct(fields);
+                return new SimpleProduct(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownPhysicalProductInterface(fields);
+                return new UnknownPhysicalProductInterface(fields, ignoreUnknownFields);
             }
         }
     }

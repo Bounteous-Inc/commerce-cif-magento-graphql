@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class AvailablePaymentMethodQuery extends AbstractQuery<AvailablePaymentMethodQuery> {
-    AvailablePaymentMethodQuery(StringBuilder _queryBuilder) {
+    public AvailablePaymentMethodQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

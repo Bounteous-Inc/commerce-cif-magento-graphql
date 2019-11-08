@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class RegionQuery extends AbstractQuery<RegionQuery> {
-    RegionQuery(StringBuilder _queryBuilder) {
+    public RegionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

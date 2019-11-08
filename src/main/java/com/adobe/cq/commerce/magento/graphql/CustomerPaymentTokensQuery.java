@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CustomerPaymentTokensQuery extends AbstractQuery<CustomerPaymentTokensQuery> {
-    CustomerPaymentTokensQuery(StringBuilder _queryBuilder) {
+    public CustomerPaymentTokensQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

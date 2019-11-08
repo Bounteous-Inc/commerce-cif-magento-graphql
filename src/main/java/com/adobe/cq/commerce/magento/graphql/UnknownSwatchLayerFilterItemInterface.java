@@ -29,6 +29,13 @@ public class UnknownSwatchLayerFilterItemInterface extends AbstractResponse<Unkn
     }
 
     public UnknownSwatchLayerFilterItemInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownSwatchLayerFilterItemInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -36,7 +43,7 @@ public class UnknownSwatchLayerFilterItemInterface extends AbstractResponse<Unkn
                 case "swatch_data": {
                     SwatchData optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SwatchData(jsonAsObject(field.getValue(), key));
+                        optional1 = new SwatchData(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -57,14 +64,18 @@ public class UnknownSwatchLayerFilterItemInterface extends AbstractResponse<Unkn
     }
 
     public static SwatchLayerFilterItemInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static SwatchLayerFilterItemInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "SwatchLayerFilterItem": {
-                return new SwatchLayerFilterItem(fields);
+                return new SwatchLayerFilterItem(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownSwatchLayerFilterItemInterface(fields);
+                return new UnknownSwatchLayerFilterItemInterface(fields, ignoreUnknownFields);
             }
         }
     }

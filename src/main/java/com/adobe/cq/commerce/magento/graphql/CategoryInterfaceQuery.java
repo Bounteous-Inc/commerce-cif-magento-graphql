@@ -21,10 +21,18 @@ import com.shopify.graphql.support.Arguments;
  * CategoryInterface contains the full set of attributes that can be returned in a category search.
  */
 public class CategoryInterfaceQuery extends AbstractQuery<CategoryInterfaceQuery> {
-    CategoryInterfaceQuery(StringBuilder _queryBuilder) {
+    public CategoryInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public CategoryInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     public CategoryInterfaceQuery availableSortBy() {

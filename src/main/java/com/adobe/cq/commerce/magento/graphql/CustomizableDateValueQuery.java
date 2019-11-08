@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * picker.
  */
 public class CustomizableDateValueQuery extends AbstractQuery<CustomizableDateValueQuery> {
-    CustomizableDateValueQuery(StringBuilder _queryBuilder) {
+    public CustomizableDateValueQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

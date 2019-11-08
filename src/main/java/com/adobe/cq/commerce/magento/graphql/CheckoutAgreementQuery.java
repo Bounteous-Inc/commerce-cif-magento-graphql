@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Defines all Checkout Agreement information
  */
 public class CheckoutAgreementQuery extends AbstractQuery<CheckoutAgreementQuery> {
-    CheckoutAgreementQuery(StringBuilder _queryBuilder) {
+    public CheckoutAgreementQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

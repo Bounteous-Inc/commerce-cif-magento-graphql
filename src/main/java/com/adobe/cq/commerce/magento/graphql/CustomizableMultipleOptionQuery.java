@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * customizable option.
  */
 public class CustomizableMultipleOptionQuery extends AbstractQuery<CustomizableMultipleOptionQuery> {
-    CustomizableMultipleOptionQuery(StringBuilder _queryBuilder) {
+    public CustomizableMultipleOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

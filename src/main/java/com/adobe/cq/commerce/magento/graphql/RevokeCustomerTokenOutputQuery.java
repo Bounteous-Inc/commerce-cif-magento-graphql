@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class RevokeCustomerTokenOutputQuery extends AbstractQuery<RevokeCustomerTokenOutputQuery> {
-    RevokeCustomerTokenOutputQuery(StringBuilder _queryBuilder) {
+    public RevokeCustomerTokenOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

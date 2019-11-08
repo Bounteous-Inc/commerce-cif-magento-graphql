@@ -30,6 +30,13 @@ public class UnknownCustomizableOptionInterface extends AbstractResponse<Unknown
     }
 
     public UnknownCustomizableOptionInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownCustomizableOptionInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -91,42 +98,46 @@ public class UnknownCustomizableOptionInterface extends AbstractResponse<Unknown
     }
 
     public static CustomizableOptionInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static CustomizableOptionInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "CustomizableAreaOption": {
-                return new CustomizableAreaOption(fields);
+                return new CustomizableAreaOption(fields, ignoreUnknownFields);
             }
 
             case "CustomizableCheckboxOption": {
-                return new CustomizableCheckboxOption(fields);
+                return new CustomizableCheckboxOption(fields, ignoreUnknownFields);
             }
 
             case "CustomizableDateOption": {
-                return new CustomizableDateOption(fields);
+                return new CustomizableDateOption(fields, ignoreUnknownFields);
             }
 
             case "CustomizableDropDownOption": {
-                return new CustomizableDropDownOption(fields);
+                return new CustomizableDropDownOption(fields, ignoreUnknownFields);
             }
 
             case "CustomizableFieldOption": {
-                return new CustomizableFieldOption(fields);
+                return new CustomizableFieldOption(fields, ignoreUnknownFields);
             }
 
             case "CustomizableFileOption": {
-                return new CustomizableFileOption(fields);
+                return new CustomizableFileOption(fields, ignoreUnknownFields);
             }
 
             case "CustomizableMultipleOption": {
-                return new CustomizableMultipleOption(fields);
+                return new CustomizableMultipleOption(fields, ignoreUnknownFields);
             }
 
             case "CustomizableRadioOption": {
-                return new CustomizableRadioOption(fields);
+                return new CustomizableRadioOption(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownCustomizableOptionInterface(fields);
+                return new UnknownCustomizableOptionInterface(fields, ignoreUnknownFields);
             }
         }
     }

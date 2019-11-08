@@ -29,6 +29,13 @@ public class SelectedCustomizableOptionValue extends AbstractResponse<SelectedCu
     }
 
     public SelectedCustomizableOptionValue(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public SelectedCustomizableOptionValue(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -46,7 +53,7 @@ public class SelectedCustomizableOptionValue extends AbstractResponse<SelectedCu
                 }
 
                 case "price": {
-                    responseData.put(key, new CartItemSelectedOptionValuePrice(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new CartItemSelectedOptionValuePrice(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }

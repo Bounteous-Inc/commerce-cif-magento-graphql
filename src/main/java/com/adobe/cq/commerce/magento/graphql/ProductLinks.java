@@ -29,6 +29,13 @@ public class ProductLinks extends AbstractResponse<ProductLinks> implements Prod
     }
 
     public ProductLinks(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public ProductLinks(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);

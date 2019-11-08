@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * of a customizable option.
  */
 public class CustomizableRadioOptionQuery extends AbstractQuery<CustomizableRadioOptionQuery> {
-    CustomizableRadioOptionQuery(StringBuilder _queryBuilder) {
+    public CustomizableRadioOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

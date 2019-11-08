@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * customizable option.
  */
 public class CustomizableDropDownOptionQuery extends AbstractQuery<CustomizableDropDownOptionQuery> {
-    CustomizableDropDownOptionQuery(StringBuilder _queryBuilder) {
+    public CustomizableDropDownOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

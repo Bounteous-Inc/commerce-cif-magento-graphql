@@ -22,7 +22,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * contain a minimum and maximum price.
  */
 public class ProductPricesQuery extends AbstractQuery<ProductPricesQuery> {
-    ProductPricesQuery(StringBuilder _queryBuilder) {
+    public ProductPricesQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

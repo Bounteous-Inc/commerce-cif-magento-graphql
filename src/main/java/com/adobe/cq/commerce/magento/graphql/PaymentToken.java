@@ -29,6 +29,13 @@ public class PaymentToken extends AbstractResponse<PaymentToken> {
     }
 
     public PaymentToken(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public PaymentToken(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);

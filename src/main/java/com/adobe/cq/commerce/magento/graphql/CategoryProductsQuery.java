@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The category products object returned in the Category query.
  */
 public class CategoryProductsQuery extends AbstractQuery<CategoryProductsQuery> {
-    CategoryProductsQuery(StringBuilder _queryBuilder) {
+    public CategoryProductsQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

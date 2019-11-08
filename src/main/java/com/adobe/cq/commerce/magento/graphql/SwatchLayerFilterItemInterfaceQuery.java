@@ -20,10 +20,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SwatchLayerFilterItemInterfaceQuery extends AbstractQuery<SwatchLayerFilterItemInterfaceQuery> {
-    SwatchLayerFilterItemInterfaceQuery(StringBuilder _queryBuilder) {
+    public SwatchLayerFilterItemInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public SwatchLayerFilterItemInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     /**

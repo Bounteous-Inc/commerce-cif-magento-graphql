@@ -29,12 +29,19 @@ public class CustomerOutput extends AbstractResponse<CustomerOutput> {
     }
 
     public CustomerOutput(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CustomerOutput(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
             switch (fieldName) {
                 case "customer": {
-                    responseData.put(key, new Customer(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new Customer(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }

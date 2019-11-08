@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Customer defines the customer name and address and other details
  */
 public class CustomerQuery extends AbstractQuery<CustomerQuery> {
-    CustomerQuery(StringBuilder _queryBuilder) {
+    public CustomerQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

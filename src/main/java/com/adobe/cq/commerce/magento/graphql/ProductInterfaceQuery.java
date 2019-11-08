@@ -21,10 +21,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * descriptions may not be available for custom and EAV attributes.
  */
 public class ProductInterfaceQuery extends AbstractQuery<ProductInterfaceQuery> {
-    ProductInterfaceQuery(StringBuilder _queryBuilder) {
+    public ProductInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public ProductInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     /**

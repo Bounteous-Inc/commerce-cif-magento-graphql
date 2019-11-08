@@ -31,6 +31,13 @@ public class UnknownCategoryInterface extends AbstractResponse<UnknownCategoryIn
     }
 
     public UnknownCategoryInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownCategoryInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -63,7 +70,7 @@ public class UnknownCategoryInterface extends AbstractResponse<UnknownCategoryIn
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             Breadcrumb optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new Breadcrumb(jsonAsObject(element1, key));
+                                optional2 = new Breadcrumb(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -300,7 +307,7 @@ public class UnknownCategoryInterface extends AbstractResponse<UnknownCategoryIn
                 case "products": {
                     CategoryProducts optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CategoryProducts(jsonAsObject(field.getValue(), key));
+                        optional1 = new CategoryProducts(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -354,14 +361,18 @@ public class UnknownCategoryInterface extends AbstractResponse<UnknownCategoryIn
     }
 
     public static CategoryInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static CategoryInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "CategoryTree": {
-                return new CategoryTree(fields);
+                return new CategoryTree(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownCategoryInterface(fields);
+                return new UnknownCategoryInterface(fields, ignoreUnknownFields);
             }
         }
     }

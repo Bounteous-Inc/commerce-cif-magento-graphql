@@ -20,10 +20,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CartItemInterfaceQuery extends AbstractQuery<CartItemInterfaceQuery> {
-    CartItemInterfaceQuery(StringBuilder _queryBuilder) {
+    public CartItemInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public CartItemInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     public CartItemInterfaceQuery id() {

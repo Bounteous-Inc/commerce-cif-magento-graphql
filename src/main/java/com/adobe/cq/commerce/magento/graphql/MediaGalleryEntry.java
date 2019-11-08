@@ -32,6 +32,13 @@ public class MediaGalleryEntry extends AbstractResponse<MediaGalleryEntry> {
     }
 
     public MediaGalleryEntry(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public MediaGalleryEntry(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -39,7 +46,7 @@ public class MediaGalleryEntry extends AbstractResponse<MediaGalleryEntry> {
                 case "content": {
                     ProductMediaGalleryEntriesContent optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductMediaGalleryEntriesContent(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductMediaGalleryEntriesContent(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -137,7 +144,7 @@ public class MediaGalleryEntry extends AbstractResponse<MediaGalleryEntry> {
                 case "video_content": {
                     ProductMediaGalleryEntriesVideoContent optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductMediaGalleryEntriesVideoContent(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductMediaGalleryEntriesVideoContent(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

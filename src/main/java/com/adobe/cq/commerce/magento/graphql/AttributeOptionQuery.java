@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Attribute option.
  */
 public class AttributeOptionQuery extends AbstractQuery<AttributeOptionQuery> {
-    AttributeOptionQuery(StringBuilder _queryBuilder) {
+    public AttributeOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

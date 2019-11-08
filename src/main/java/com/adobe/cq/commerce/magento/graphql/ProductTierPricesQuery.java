@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * specific customer group.
  */
 public class ProductTierPricesQuery extends AbstractQuery<ProductTierPricesQuery> {
-    ProductTierPricesQuery(StringBuilder _queryBuilder) {
+    public ProductTierPricesQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

@@ -20,10 +20,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * CustomizableProductInterface contains information about customizable product options.
  */
 public class CustomizableProductInterfaceQuery extends AbstractQuery<CustomizableProductInterfaceQuery> {
-    CustomizableProductInterfaceQuery(StringBuilder _queryBuilder) {
+    public CustomizableProductInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public CustomizableProductInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     /**

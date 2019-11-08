@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * BundleItemOption defines characteristics and options for a specific bundle item.
  */
 public class BundleItemOptionQuery extends AbstractQuery<BundleItemOptionQuery> {
-    BundleItemOptionQuery(StringBuilder _queryBuilder) {
+    public BundleItemOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

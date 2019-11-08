@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class WishlistOutputQuery extends AbstractQuery<WishlistOutputQuery> {
-    WishlistOutputQuery(StringBuilder _queryBuilder) {
+    public WishlistOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

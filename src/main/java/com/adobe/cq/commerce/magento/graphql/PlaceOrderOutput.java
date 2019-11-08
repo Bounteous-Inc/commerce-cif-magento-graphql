@@ -29,12 +29,19 @@ public class PlaceOrderOutput extends AbstractResponse<PlaceOrderOutput> {
     }
 
     public PlaceOrderOutput(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public PlaceOrderOutput(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
             switch (fieldName) {
                 case "order": {
-                    responseData.put(key, new Order(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new Order(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }

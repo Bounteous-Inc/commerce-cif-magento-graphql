@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * ProductLinks is an implementation of ProductLinksInterface.
  */
 public class ProductLinksQuery extends AbstractQuery<ProductLinksQuery> {
-    ProductLinksQuery(StringBuilder _queryBuilder) {
+    public ProductLinksQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

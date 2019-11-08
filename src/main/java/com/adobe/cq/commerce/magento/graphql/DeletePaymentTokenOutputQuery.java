@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class DeletePaymentTokenOutputQuery extends AbstractQuery<DeletePaymentTokenOutputQuery> {
-    DeletePaymentTokenOutputQuery(StringBuilder _queryBuilder) {
+    public DeletePaymentTokenOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

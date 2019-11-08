@@ -21,7 +21,7 @@ import com.shopify.graphql.support.Arguments;
  * Category Tree implementation.
  */
 public class CategoryTreeQuery extends AbstractQuery<CategoryTreeQuery> {
-    CategoryTreeQuery(StringBuilder _queryBuilder) {
+    public CategoryTreeQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

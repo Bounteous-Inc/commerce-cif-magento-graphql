@@ -32,6 +32,13 @@ public class CustomizableCheckboxOption extends AbstractResponse<CustomizableChe
     }
 
     public CustomizableCheckboxOption(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CustomizableCheckboxOption(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -87,7 +94,7 @@ public class CustomizableCheckboxOption extends AbstractResponse<CustomizableChe
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CustomizableCheckboxValue optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new CustomizableCheckboxValue(jsonAsObject(element1, key));
+                                optional2 = new CustomizableCheckboxValue(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);

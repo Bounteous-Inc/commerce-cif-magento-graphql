@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * DownloadableProduct defines a product that the customer downloads
  */
 public class DownloadableProductQuery extends AbstractQuery<DownloadableProductQuery> {
-    DownloadableProductQuery(StringBuilder _queryBuilder) {
+    public DownloadableProductQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

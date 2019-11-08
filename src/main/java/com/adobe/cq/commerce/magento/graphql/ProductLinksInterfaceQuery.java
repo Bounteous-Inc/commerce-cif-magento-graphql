@@ -21,10 +21,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * each item.
  */
 public class ProductLinksInterfaceQuery extends AbstractQuery<ProductLinksInterfaceQuery> {
-    ProductLinksInterfaceQuery(StringBuilder _queryBuilder) {
+    public ProductLinksInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public ProductLinksInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     /**

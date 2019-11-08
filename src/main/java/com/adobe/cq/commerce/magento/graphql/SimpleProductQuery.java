@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * A simple product is tangible and are usually sold as single units or in fixed quantities.
  */
 public class SimpleProductQuery extends AbstractQuery<SimpleProductQuery> {
-    SimpleProductQuery(StringBuilder _queryBuilder) {
+    public SimpleProductQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * GroupedProduct defines a grouped product
  */
 public class GroupedProductQuery extends AbstractQuery<GroupedProductQuery> {
-    GroupedProductQuery(StringBuilder _queryBuilder) {
+    public GroupedProductQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

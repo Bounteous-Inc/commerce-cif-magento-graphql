@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CartAddressCountryQuery extends AbstractQuery<CartAddressCountryQuery> {
-    CartAddressCountryQuery(StringBuilder _queryBuilder) {
+    public CartAddressCountryQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

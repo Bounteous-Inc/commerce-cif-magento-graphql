@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Virtual Cart Item
  */
 public class VirtualCartItemQuery extends AbstractQuery<VirtualCartItemQuery> {
-    VirtualCartItemQuery(StringBuilder _queryBuilder) {
+    public VirtualCartItemQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

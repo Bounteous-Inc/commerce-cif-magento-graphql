@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class AddVirtualProductsToCartOutputQuery extends AbstractQuery<AddVirtualProductsToCartOutputQuery> {
-    AddVirtualProductsToCartOutputQuery(StringBuilder _queryBuilder) {
+    public AddVirtualProductsToCartOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

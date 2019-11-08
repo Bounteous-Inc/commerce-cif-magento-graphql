@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * customizable option.
  */
 public class CustomizableFieldOptionQuery extends AbstractQuery<CustomizableFieldOptionQuery> {
-    CustomizableFieldOptionQuery(StringBuilder _queryBuilder) {
+    public CustomizableFieldOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

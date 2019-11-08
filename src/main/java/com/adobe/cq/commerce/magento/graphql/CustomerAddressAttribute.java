@@ -29,6 +29,13 @@ public class CustomerAddressAttribute extends AbstractResponse<CustomerAddressAt
     }
 
     public CustomerAddressAttribute(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CustomerAddressAttribute(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);

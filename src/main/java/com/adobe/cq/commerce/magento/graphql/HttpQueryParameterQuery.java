@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The object details of target path parameters
  */
 public class HttpQueryParameterQuery extends AbstractQuery<HttpQueryParameterQuery> {
-    HttpQueryParameterQuery(StringBuilder _queryBuilder) {
+    public HttpQueryParameterQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

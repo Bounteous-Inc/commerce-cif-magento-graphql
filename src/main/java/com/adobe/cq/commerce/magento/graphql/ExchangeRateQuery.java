@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class ExchangeRateQuery extends AbstractQuery<ExchangeRateQuery> {
-    ExchangeRateQuery(StringBuilder _queryBuilder) {
+    public ExchangeRateQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

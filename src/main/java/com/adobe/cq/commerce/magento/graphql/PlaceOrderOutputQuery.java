@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class PlaceOrderOutputQuery extends AbstractQuery<PlaceOrderOutputQuery> {
-    PlaceOrderOutputQuery(StringBuilder _queryBuilder) {
+    public PlaceOrderOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

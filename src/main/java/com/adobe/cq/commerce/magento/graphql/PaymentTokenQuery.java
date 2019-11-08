@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The stored payment method available to the customer
  */
 public class PaymentTokenQuery extends AbstractQuery<PaymentTokenQuery> {
-    PaymentTokenQuery(StringBuilder _queryBuilder) {
+    public PaymentTokenQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

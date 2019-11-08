@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class ApplyCouponToCartOutputQuery extends AbstractQuery<ApplyCouponToCartOutputQuery> {
-    ApplyCouponToCartOutputQuery(StringBuilder _queryBuilder) {
+    public ApplyCouponToCartOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

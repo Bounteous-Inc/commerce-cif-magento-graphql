@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * inventory.
  */
 public class VirtualProductQuery extends AbstractQuery<VirtualProductQuery> {
-    VirtualProductQuery(StringBuilder _queryBuilder) {
+    public VirtualProductQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

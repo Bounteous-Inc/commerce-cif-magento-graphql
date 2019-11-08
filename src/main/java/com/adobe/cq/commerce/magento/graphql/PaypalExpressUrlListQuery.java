@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Checkout and Payments Standard transactions.
  */
 public class PaypalExpressUrlListQuery extends AbstractQuery<PaypalExpressUrlListQuery> {
-    PaypalExpressUrlListQuery(StringBuilder _queryBuilder) {
+    public PaypalExpressUrlListQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

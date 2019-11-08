@@ -30,6 +30,13 @@ public class UnknownProductLinksInterface extends AbstractResponse<UnknownProduc
     }
 
     public UnknownProductLinksInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownProductLinksInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -102,14 +109,18 @@ public class UnknownProductLinksInterface extends AbstractResponse<UnknownProduc
     }
 
     public static ProductLinksInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static ProductLinksInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "ProductLinks": {
-                return new ProductLinks(fields);
+                return new ProductLinks(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownProductLinksInterface(fields);
+                return new UnknownProductLinksInterface(fields, ignoreUnknownFields);
             }
         }
     }

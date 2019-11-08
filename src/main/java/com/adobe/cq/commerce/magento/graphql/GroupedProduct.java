@@ -31,6 +31,13 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
     }
 
     public GroupedProduct(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public GroupedProduct(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -64,7 +71,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CategoryInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownCategoryInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownCategoryInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -118,7 +125,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -135,7 +142,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                 case "description": {
                     ComplexTextValue optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key));
+                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -168,7 +175,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                 case "image": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -183,7 +190,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             GroupedProductItem optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new GroupedProductItem(jsonAsObject(element1, key));
+                                optional2 = new GroupedProductItem(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -215,7 +222,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             MediaGalleryInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownMediaGalleryInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownMediaGalleryInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -236,7 +243,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             MediaGalleryEntry optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new MediaGalleryEntry(jsonAsObject(element1, key));
+                                optional2 = new MediaGalleryEntry(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -341,7 +348,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                 case "price": {
                     ProductPrices optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductPrices(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductPrices(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -356,7 +363,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductLinksInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductLinksInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductLinksInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -377,7 +384,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -394,7 +401,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                 case "short_description": {
                     ComplexTextValue optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key));
+                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -416,7 +423,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                 case "small_image": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -482,7 +489,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                 case "thumbnail": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -508,7 +515,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductTierPrices optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new ProductTierPrices(jsonAsObject(element1, key));
+                                optional2 = new ProductTierPrices(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -551,7 +558,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -594,7 +601,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             UrlRewrite optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new UrlRewrite(jsonAsObject(element1, key));
+                                optional2 = new UrlRewrite(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -615,7 +622,7 @@ public class GroupedProduct extends AbstractResponse<GroupedProduct> implements 
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             Website optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new Website(jsonAsObject(element1, key));
+                                optional2 = new Website(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);

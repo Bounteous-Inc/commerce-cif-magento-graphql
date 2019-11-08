@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class PayflowProResponseOutputQuery extends AbstractQuery<PayflowProResponseOutputQuery> {
-    PayflowProResponseOutputQuery(StringBuilder _queryBuilder) {
+    public PayflowProResponseOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

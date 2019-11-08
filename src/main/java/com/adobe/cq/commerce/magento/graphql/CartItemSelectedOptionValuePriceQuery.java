@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CartItemSelectedOptionValuePriceQuery extends AbstractQuery<CartItemSelectedOptionValuePriceQuery> {
-    CartItemSelectedOptionValuePriceQuery(StringBuilder _queryBuilder) {
+    public CartItemSelectedOptionValuePriceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

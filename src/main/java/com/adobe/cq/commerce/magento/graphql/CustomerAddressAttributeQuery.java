@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CustomerAddressAttributeQuery extends AbstractQuery<CustomerAddressAttributeQuery> {
-    CustomerAddressAttributeQuery(StringBuilder _queryBuilder) {
+    public CustomerAddressAttributeQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

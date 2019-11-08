@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Order mapping fields
  */
 public class CustomerOrderQuery extends AbstractQuery<CustomerOrderQuery> {
-    CustomerOrderQuery(StringBuilder _queryBuilder) {
+    public CustomerOrderQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

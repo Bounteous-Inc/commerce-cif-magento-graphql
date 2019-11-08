@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * field.
  */
 public class CustomizableFieldValueQuery extends AbstractQuery<CustomizableFieldValueQuery> {
-    CustomizableFieldValueQuery(StringBuilder _queryBuilder) {
+    public CustomizableFieldValueQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

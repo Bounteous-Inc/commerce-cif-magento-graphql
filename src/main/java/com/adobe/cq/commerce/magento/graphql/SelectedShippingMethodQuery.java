@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SelectedShippingMethodQuery extends AbstractQuery<SelectedShippingMethodQuery> {
-    SelectedShippingMethodQuery(StringBuilder _queryBuilder) {
+    public SelectedShippingMethodQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

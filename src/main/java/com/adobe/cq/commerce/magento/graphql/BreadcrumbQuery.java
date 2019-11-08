@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Breadcrumb item.
  */
 public class BreadcrumbQuery extends AbstractQuery<BreadcrumbQuery> {
-    BreadcrumbQuery(StringBuilder _queryBuilder) {
+    public BreadcrumbQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

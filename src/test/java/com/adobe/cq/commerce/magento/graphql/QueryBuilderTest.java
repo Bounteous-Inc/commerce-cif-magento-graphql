@@ -16,6 +16,7 @@ package com.adobe.cq.commerce.magento.graphql;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.function.BiFunction;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
@@ -25,6 +26,10 @@ import com.adobe.cq.commerce.magento.graphql.QueryQuery.CategoryArgumentsDefinit
 import com.adobe.cq.commerce.magento.graphql.QueryQuery.ProductsArgumentsDefinition;
 import com.adobe.cq.commerce.magento.graphql.gson.MutationDeserializer;
 import com.adobe.cq.commerce.magento.graphql.gson.QueryDeserializer;
+import com.adobe.cq.commerce.magento.luma.graphql.LumaConfigurableProduct;
+import com.adobe.cq.commerce.magento.luma.graphql.LumaProductInterfaceQuery;
+import com.adobe.cq.commerce.magento.luma.graphql.LumaSimpleProduct;
+import com.adobe.cq.commerce.magento.luma.graphql.LumaSimpleProductQuery;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -292,4 +297,69 @@ public class QueryBuilderTest {
         Assert.assertEquals("Zing Jump Rope", replacementProduct.getName());
         Assert.assertEquals(Integer.valueOf(42), replacementProduct.getAsInteger("weight"));
     }
+
+    @Test
+    public void testExtraFields() throws IOException, SchemaViolationError {
+        String expectedQuery = getResource("queries/product-by-sku-extended.txt");
+        String jsonResponse = getResource("responses/product-by-sku-extended.json");
+
+        FilterTypeInput input = new FilterTypeInput().setEq("whatever");
+        ProductFilterInput filter = new ProductFilterInput().setSku(input);
+        ProductsArgumentsDefinition searchArgs = s -> s.filter(filter);
+
+        // This is the CUSTOM query for the main product query, taking the CUSTOM sub-query for variants as parameter
+        ProductInterfaceQueryDefinition queryDef = q -> productQuery.apply(q, simpleProductQuery);
+
+        // This is the final GraphQL query
+        ProductsQueryDefinition queryArgs = q -> q.items(queryDef);
+
+        // The generated query has the extra fields declared
+        String queryString = Operations.query(query -> query.products(searchArgs, queryArgs)).toString();
+        Assert.assertEquals(expectedQuery, queryString);
+
+        // CUSTOM deserialiser ignoring unknown fields
+        // Important: this deserializer DOES NOT know anything about Luma* classes
+        // --> this way the base CIF components would be able to parse JSON responses with extra custom fields
+        Query query = QueryDeserializer.getCustomGson().fromJson(jsonResponse, Query.class);
+        ProductInterface product = query.getProducts().getItems().get(0);
+
+        Assert.assertEquals("testConfigurableProduct", product.getSku());
+        Assert.assertEquals("Test Configurable Product", product.getName());
+        Assert.assertEquals("test-category", product.getCategories().get(0).getUrlPath());
+
+        // EXTRA fields + extended schema class
+        LumaConfigurableProduct lumaProduct = new LumaConfigurableProduct(((ConfigurableProduct) product).getFields());
+        Assert.assertEquals("activity", lumaProduct.getActivity());
+        Assert.assertEquals("category_gear", lumaProduct.getCategoryGear());
+
+        // NESTED objects are still correctly parsed
+        Assert.assertEquals(CurrencyEnum.USD, lumaProduct.getPrice().getRegularPrice().getAmount().getCurrency());
+        Assert.assertEquals(22.2, lumaProduct.getPrice().getRegularPrice().getAmount().getValue(), 0);
+
+        // VARIANT query was also customized
+        if (product instanceof ConfigurableProduct) {
+            SimpleProduct variant = ((ConfigurableProduct) product).getVariants().get(0).getProduct();
+            LumaSimpleProduct lumaVariant = new LumaSimpleProduct(variant.getFields());
+            Assert.assertEquals("climate", lumaVariant.getClimate()); // <--- EXTRA field can be accessed
+            Assert.assertEquals("Test Simple Product", lumaVariant.getName());
+            Assert.assertEquals("Test Simple Product Description", lumaVariant.getDescription().getHtml());
+        }
+    }
+
+    public SimpleProductQueryDefinition simpleProductQuery = q -> {
+        LumaSimpleProductQuery custom = new LumaSimpleProductQuery(q.getQueryBuilder());
+        TestGraphqlQueries.SIMPLE_PRODUCT_QUERY_LAMBDA
+            .apply(custom
+                .climate()); // <--- EXTRA field
+    };
+
+    // Declared as a BiFunction because it takes the sub-query for variants as argument
+    public BiFunction<ProductInterfaceQuery, SimpleProductQueryDefinition, ProductInterfaceQuery> productQuery = (q, s) -> {
+        LumaProductInterfaceQuery custom = new LumaProductInterfaceQuery(q.getQueryBuilder(), true, false);
+        return TestGraphqlQueries.CONFIGURABLE_PRODUCT_QUERY_LAMBDA
+            .apply(custom
+                .activity()          // <--- EXTRA field
+                .categoryGear(), s); // <--- EXTRA field + sub-query passed as a parameter
+    };
+
 }

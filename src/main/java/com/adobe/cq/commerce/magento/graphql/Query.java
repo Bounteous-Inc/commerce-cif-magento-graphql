@@ -31,6 +31,13 @@ public class Query extends AbstractResponse<Query> {
     }
 
     public Query(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public Query(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -38,7 +45,7 @@ public class Query extends AbstractResponse<Query> {
                 case "cart": {
                     Cart optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Cart(jsonAsObject(field.getValue(), key));
+                        optional1 = new Cart(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -49,7 +56,7 @@ public class Query extends AbstractResponse<Query> {
                 case "category": {
                     CategoryTree optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CategoryTree(jsonAsObject(field.getValue(), key));
+                        optional1 = new CategoryTree(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -64,7 +71,7 @@ public class Query extends AbstractResponse<Query> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CheckoutAgreement optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new CheckoutAgreement(jsonAsObject(element1, key));
+                                optional2 = new CheckoutAgreement(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -81,7 +88,7 @@ public class Query extends AbstractResponse<Query> {
                 case "cmsBlocks": {
                     CmsBlocks optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CmsBlocks(jsonAsObject(field.getValue(), key));
+                        optional1 = new CmsBlocks(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -92,7 +99,7 @@ public class Query extends AbstractResponse<Query> {
                 case "cmsPage": {
                     CmsPage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CmsPage(jsonAsObject(field.getValue(), key));
+                        optional1 = new CmsPage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -107,7 +114,7 @@ public class Query extends AbstractResponse<Query> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             Country optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new Country(jsonAsObject(element1, key));
+                                optional2 = new Country(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -124,7 +131,7 @@ public class Query extends AbstractResponse<Query> {
                 case "country": {
                     Country optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Country(jsonAsObject(field.getValue(), key));
+                        optional1 = new Country(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -135,7 +142,7 @@ public class Query extends AbstractResponse<Query> {
                 case "currency": {
                     Currency optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Currency(jsonAsObject(field.getValue(), key));
+                        optional1 = new Currency(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -146,7 +153,7 @@ public class Query extends AbstractResponse<Query> {
                 case "customAttributeMetadata": {
                     CustomAttributeMetadata optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomAttributeMetadata(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomAttributeMetadata(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -157,7 +164,7 @@ public class Query extends AbstractResponse<Query> {
                 case "customer": {
                     Customer optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Customer(jsonAsObject(field.getValue(), key));
+                        optional1 = new Customer(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -168,7 +175,7 @@ public class Query extends AbstractResponse<Query> {
                 case "customerDownloadableProducts": {
                     CustomerDownloadableProducts optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerDownloadableProducts(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerDownloadableProducts(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -179,7 +186,7 @@ public class Query extends AbstractResponse<Query> {
                 case "customerOrders": {
                     CustomerOrders optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerOrders(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerOrders(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -190,7 +197,7 @@ public class Query extends AbstractResponse<Query> {
                 case "customerPaymentTokens": {
                     CustomerPaymentTokens optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerPaymentTokens(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerPaymentTokens(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -201,7 +208,7 @@ public class Query extends AbstractResponse<Query> {
                 case "getHostedProUrl": {
                     HostedProUrl optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new HostedProUrl(jsonAsObject(field.getValue(), key));
+                        optional1 = new HostedProUrl(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -212,7 +219,7 @@ public class Query extends AbstractResponse<Query> {
                 case "getPayflowLinkToken": {
                     PayflowLinkToken optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new PayflowLinkToken(jsonAsObject(field.getValue(), key));
+                        optional1 = new PayflowLinkToken(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -223,7 +230,7 @@ public class Query extends AbstractResponse<Query> {
                 case "isEmailAvailable": {
                     IsEmailAvailableOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new IsEmailAvailableOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new IsEmailAvailableOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -234,7 +241,7 @@ public class Query extends AbstractResponse<Query> {
                 case "products": {
                     Products optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Products(jsonAsObject(field.getValue(), key));
+                        optional1 = new Products(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -245,7 +252,7 @@ public class Query extends AbstractResponse<Query> {
                 case "storeConfig": {
                     StoreConfig optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new StoreConfig(jsonAsObject(field.getValue(), key));
+                        optional1 = new StoreConfig(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -256,7 +263,7 @@ public class Query extends AbstractResponse<Query> {
                 case "urlResolver": {
                     EntityUrl optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new EntityUrl(jsonAsObject(field.getValue(), key));
+                        optional1 = new EntityUrl(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -267,7 +274,7 @@ public class Query extends AbstractResponse<Query> {
                 case "wishlist": {
                     WishlistOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new WishlistOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new WishlistOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

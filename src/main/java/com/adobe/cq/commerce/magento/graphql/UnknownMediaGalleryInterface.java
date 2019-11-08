@@ -29,6 +29,13 @@ public class UnknownMediaGalleryInterface extends AbstractResponse<UnknownMediaG
     }
 
     public UnknownMediaGalleryInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownMediaGalleryInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -68,18 +75,22 @@ public class UnknownMediaGalleryInterface extends AbstractResponse<UnknownMediaG
     }
 
     public static MediaGalleryInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static MediaGalleryInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "ProductImage": {
-                return new ProductImage(fields);
+                return new ProductImage(fields, ignoreUnknownFields);
             }
 
             case "ProductVideo": {
-                return new ProductVideo(fields);
+                return new ProductVideo(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownMediaGalleryInterface(fields);
+                return new UnknownMediaGalleryInterface(fields, ignoreUnknownFields);
             }
         }
     }

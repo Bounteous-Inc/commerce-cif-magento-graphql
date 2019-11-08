@@ -20,10 +20,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * Contains basic information about a product image or video.
  */
 public class MediaGalleryInterfaceQuery extends AbstractQuery<MediaGalleryInterfaceQuery> {
-    MediaGalleryInterfaceQuery(StringBuilder _queryBuilder) {
+    public MediaGalleryInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public MediaGalleryInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     /**

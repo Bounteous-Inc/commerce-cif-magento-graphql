@@ -32,10 +32,19 @@ import com.shopify.graphql.support.SchemaViolationError;
 public class QueryDeserializer implements JsonDeserializer<Query> {
 
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(Query.class, new QueryDeserializer()).create();
+    private static final Gson customGson = new GsonBuilder().registerTypeAdapter(Query.class, new QueryDeserializer(true)).create();
+
+    private boolean ignoreUnknownFields = false;
+
+    private QueryDeserializer() {}
+
+    private QueryDeserializer(boolean ignoreUnknownFields) {
+        this.ignoreUnknownFields = ignoreUnknownFields;
+    }
 
     public Query deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         try {
-            return new Query(json.getAsJsonObject());
+            return new Query(json.getAsJsonObject(), ignoreUnknownFields);
         } catch (SchemaViolationError e) {
             throw new JsonParseException(e);
         }
@@ -49,5 +58,18 @@ public class QueryDeserializer implements JsonDeserializer<Query> {
      */
     public static Gson getGson() {
         return gson;
+    }
+
+    /**
+     * This method returns a static <b>permissive</b> {@link Gson} instance configured with this custom deserializer for the Magento
+     * GraphQL {@link Query} root type. This method always returns the same static deserializer.
+     * 
+     * This deserializer is permissive in the sense that it <b>ignores</b> unknown fields, that is, it doesn't throw any
+     * schema violation exception if it finds an unknown field in the JSON response.
+     * 
+     * @return The custom deserializer.
+     */
+    public static Gson getCustomGson() {
+        return customGson;
     }
 }

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CurrencyQuery extends AbstractQuery<CurrencyQuery> {
-    CurrencyQuery(StringBuilder _queryBuilder) {
+    public CurrencyQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

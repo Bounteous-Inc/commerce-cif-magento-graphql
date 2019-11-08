@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * the video.
  */
 public class ProductMediaGalleryEntriesVideoContentQuery extends AbstractQuery<ProductMediaGalleryEntriesVideoContentQuery> {
-    ProductMediaGalleryEntriesVideoContentQuery(StringBuilder _queryBuilder) {
+    public ProductMediaGalleryEntriesVideoContentQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

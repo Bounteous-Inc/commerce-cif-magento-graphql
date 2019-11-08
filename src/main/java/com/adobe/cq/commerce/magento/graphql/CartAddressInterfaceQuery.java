@@ -20,10 +20,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CartAddressInterfaceQuery extends AbstractQuery<CartAddressInterfaceQuery> {
-    CartAddressInterfaceQuery(StringBuilder _queryBuilder) {
+    public CartAddressInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public CartAddressInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     public CartAddressInterfaceQuery city() {

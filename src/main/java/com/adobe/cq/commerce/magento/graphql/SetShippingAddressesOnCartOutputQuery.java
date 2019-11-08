@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SetShippingAddressesOnCartOutputQuery extends AbstractQuery<SetShippingAddressesOnCartOutputQuery> {
-    SetShippingAddressesOnCartOutputQuery(StringBuilder _queryBuilder) {
+    public SetShippingAddressesOnCartOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

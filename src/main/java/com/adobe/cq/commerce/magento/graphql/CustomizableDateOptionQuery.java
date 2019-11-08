@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * customizable option.
  */
 public class CustomizableDateOptionQuery extends AbstractQuery<CustomizableDateOptionQuery> {
-    CustomizableDateOptionQuery(StringBuilder _queryBuilder) {
+    public CustomizableDateOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

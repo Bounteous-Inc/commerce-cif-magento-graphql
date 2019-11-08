@@ -21,10 +21,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * implemented by several types of configurable options.
  */
 public class CustomizableOptionInterfaceQuery extends AbstractQuery<CustomizableOptionInterfaceQuery> {
-    CustomizableOptionInterfaceQuery(StringBuilder _queryBuilder) {
+    public CustomizableOptionInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public CustomizableOptionInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     /**

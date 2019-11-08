@@ -21,7 +21,7 @@ import com.shopify.graphql.support.Arguments;
  * 
  */
 public class MutationQuery extends AbstractQuery<MutationQuery> {
-    MutationQuery(StringBuilder _queryBuilder) {
+    public MutationQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

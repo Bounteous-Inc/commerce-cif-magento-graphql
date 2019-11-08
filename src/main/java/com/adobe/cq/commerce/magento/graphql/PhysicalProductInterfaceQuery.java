@@ -20,10 +20,18 @@ import com.shopify.graphql.support.AbstractQuery;
  * PhysicalProductInterface contains attributes specific to tangible products.
  */
 public class PhysicalProductInterfaceQuery extends AbstractQuery<PhysicalProductInterfaceQuery> {
-    PhysicalProductInterfaceQuery(StringBuilder _queryBuilder) {
+    public PhysicalProductInterfaceQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
 
         startField("__typename");
+    }
+
+    public PhysicalProductInterfaceQuery(StringBuilder _queryBuilder, boolean skipTypename) {
+        super(_queryBuilder);
+
+        if (!skipTypename) {
+            startField("__typename");
+        }
     }
 
     /**

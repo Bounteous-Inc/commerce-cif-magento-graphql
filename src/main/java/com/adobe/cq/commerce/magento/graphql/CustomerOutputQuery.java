@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CustomerOutputQuery extends AbstractQuery<CustomerOutputQuery> {
-    CustomerOutputQuery(StringBuilder _queryBuilder) {
+    public CustomerOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

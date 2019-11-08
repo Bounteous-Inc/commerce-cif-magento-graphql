@@ -14,6 +14,7 @@
 
 package com.adobe.cq.commerce.magento.graphql;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class TestGraphqlQueries {
@@ -27,10 +28,7 @@ public class TestGraphqlQueries {
                 .currency()
                 .value()));
 
-    /**
-     * Test query for simple product
-     */
-    public static final SimpleProductQueryDefinition SIMPLE_PRODUCT_QUERY = q -> q
+    public static final Function<SimpleProductQuery, SimpleProductQuery> SIMPLE_PRODUCT_QUERY_LAMBDA = q -> q
         .id()
         .sku()
         .name()
@@ -43,24 +41,36 @@ public class TestGraphqlQueries {
         .price(PRODUCT_PRICE_QUERY);
 
     /**
+     * Test query for simple product
+     */
+    public static final SimpleProductQueryDefinition SIMPLE_PRODUCT_QUERY = q -> SIMPLE_PRODUCT_QUERY_LAMBDA.apply(q);
+
+    /**
      * Test query for configurable product including variants
      */
-    public static final ProductInterfaceQueryDefinition CONFIGURABLE_PRODUCT_QUERY = q -> q
-        .id()
-        .sku()
-        .name()
-        .description(d -> d.html())
-        .image(i -> i.url())
-        .thumbnail(t -> t.url())
-        .urlKey()
-        .updatedAt()
-        .createdAt()
-        .price(PRODUCT_PRICE_QUERY)
-        .categories(c -> c.urlPath())
-        .onConfigurableProduct(cp -> cp
-            .variants(v -> v
-                .product(SIMPLE_PRODUCT_QUERY)));
+    public static final BiFunction<ProductInterfaceQuery, SimpleProductQueryDefinition, ProductInterfaceQuery> CONFIGURABLE_PRODUCT_QUERY_LAMBDA = (
+        q, s) -> q
+            .id()
+            .sku()
+            .name()
+            .description(d -> d.html())
+            .image(i -> i.url())
+            .thumbnail(t -> t.url())
+            .urlKey()
+            .updatedAt()
+            .createdAt()
+            .price(TestGraphqlQueries.PRODUCT_PRICE_QUERY)
+            .categories(c -> c.urlPath())
+            .onConfigurableProduct(cp -> cp
+                .variants(v -> v
+                    .product(s))); // <--- SUB-QUERY is passed as a parameter
 
+    /**
+     * Test query for configurable product including variants
+     */
+    public static final ProductInterfaceQueryDefinition CONFIGURABLE_PRODUCT_QUERY = q -> CONFIGURABLE_PRODUCT_QUERY_LAMBDA.apply(q,
+        SIMPLE_PRODUCT_QUERY);
+    
     /**
      * Test "lambda" query for category tree WITHOUT "children" part.
      * The "children" part cannot be added because it would otherwise introduce an infinite recursion.

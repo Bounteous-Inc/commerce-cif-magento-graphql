@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * A Money object defines a monetary value, including a numeric value and a currency code.
  */
 public class MoneyQuery extends AbstractQuery<MoneyQuery> {
-    MoneyQuery(StringBuilder _queryBuilder) {
+    public MoneyQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

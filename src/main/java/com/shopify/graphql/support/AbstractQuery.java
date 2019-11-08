@@ -33,11 +33,15 @@ public abstract class AbstractQuery<T extends AbstractQuery> {
     public static final String CUSTOM_FIELD_LABEL = "_custom_";
 
     protected final StringBuilder _queryBuilder;
-    private boolean firstSelection = true;
+    protected boolean firstSelection = true;
     private String aliasSuffix = null;
 
     protected AbstractQuery(StringBuilder queryBuilder) {
         this._queryBuilder = queryBuilder;
+    }
+
+    public StringBuilder getQueryBuilder() {
+        return _queryBuilder;
     }
 
     public static void appendQuotedString(StringBuilder query, String string) {

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The object contains URL rewrite details
  */
 public class UrlRewriteQuery extends AbstractQuery<UrlRewriteQuery> {
-    UrlRewriteQuery(StringBuilder _queryBuilder) {
+    public UrlRewriteQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

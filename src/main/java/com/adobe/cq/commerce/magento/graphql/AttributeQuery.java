@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Attribute contains the attribute_type of the specified attribute_code and entity_type
  */
 public class AttributeQuery extends AbstractQuery<AttributeQuery> {
-    AttributeQuery(StringBuilder _queryBuilder) {
+    public AttributeQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

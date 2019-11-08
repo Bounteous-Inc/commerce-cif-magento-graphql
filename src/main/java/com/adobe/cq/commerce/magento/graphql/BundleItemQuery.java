@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * BundleItem defines an individual item in a bundle product.
  */
 public class BundleItemQuery extends AbstractQuery<BundleItemQuery> {
-    BundleItemQuery(StringBuilder _queryBuilder) {
+    public BundleItemQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

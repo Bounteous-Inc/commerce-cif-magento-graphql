@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Pro payment methods.
  */
 public class PayflowProTokenQuery extends AbstractQuery<PayflowProTokenQuery> {
-    PayflowProTokenQuery(StringBuilder _queryBuilder) {
+    public PayflowProTokenQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

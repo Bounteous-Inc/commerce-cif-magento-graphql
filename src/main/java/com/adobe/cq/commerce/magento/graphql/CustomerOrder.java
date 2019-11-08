@@ -29,6 +29,13 @@ public class CustomerOrder extends AbstractResponse<CustomerOrder> {
     }
 
     public CustomerOrder(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CustomerOrder(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The Products object is the top-level object returned in a product search.
  */
 public class ProductsQuery extends AbstractQuery<ProductsQuery> {
-    ProductsQuery(StringBuilder _queryBuilder) {
+    public ProductsQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

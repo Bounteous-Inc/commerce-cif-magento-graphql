@@ -31,6 +31,13 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
     }
 
     public BundleProduct(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public BundleProduct(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -64,7 +71,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CategoryInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownCategoryInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownCategoryInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -118,7 +125,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -135,7 +142,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                 case "description": {
                     ComplexTextValue optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key));
+                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -201,7 +208,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                 case "image": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -216,7 +223,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             BundleItem optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new BundleItem(jsonAsObject(element1, key));
+                                optional2 = new BundleItem(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -248,7 +255,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             MediaGalleryInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownMediaGalleryInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownMediaGalleryInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -269,7 +276,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             MediaGalleryEntry optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new MediaGalleryEntry(jsonAsObject(element1, key));
+                                optional2 = new MediaGalleryEntry(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -367,7 +374,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CustomizableOptionInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownCustomizableOptionInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownCustomizableOptionInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -395,7 +402,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                 case "price": {
                     ProductPrices optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductPrices(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductPrices(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -421,7 +428,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductLinksInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductLinksInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductLinksInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -442,7 +449,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -470,7 +477,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                 case "short_description": {
                     ComplexTextValue optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key));
+                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -492,7 +499,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                 case "small_image": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -558,7 +565,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                 case "thumbnail": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -584,7 +591,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductTierPrices optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new ProductTierPrices(jsonAsObject(element1, key));
+                                optional2 = new ProductTierPrices(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -627,7 +634,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -670,7 +677,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             UrlRewrite optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new UrlRewrite(jsonAsObject(element1, key));
+                                optional2 = new UrlRewrite(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -691,7 +698,7 @@ public class BundleProduct extends AbstractResponse<BundleProduct> implements Cu
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             Website optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new Website(jsonAsObject(element1, key));
+                                optional2 = new Website(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);

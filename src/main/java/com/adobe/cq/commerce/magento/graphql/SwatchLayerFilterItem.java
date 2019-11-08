@@ -29,6 +29,13 @@ public class SwatchLayerFilterItem extends AbstractResponse<SwatchLayerFilterIte
     }
 
     public SwatchLayerFilterItem(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public SwatchLayerFilterItem(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -58,7 +65,7 @@ public class SwatchLayerFilterItem extends AbstractResponse<SwatchLayerFilterIte
                 case "swatch_data": {
                     SwatchData optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SwatchData(jsonAsObject(field.getValue(), key));
+                        optional1 = new SwatchData(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

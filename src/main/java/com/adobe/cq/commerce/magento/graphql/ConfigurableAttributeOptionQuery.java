@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * configurable product option
  */
 public class ConfigurableAttributeOptionQuery extends AbstractQuery<ConfigurableAttributeOptionQuery> {
-    ConfigurableAttributeOptionQuery(StringBuilder _queryBuilder) {
+    public ConfigurableAttributeOptionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

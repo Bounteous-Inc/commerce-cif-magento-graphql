@@ -31,6 +31,13 @@ public class UnknownCartAddressInterface extends AbstractResponse<UnknownCartAdd
     }
 
     public UnknownCartAddressInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownCartAddressInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -60,7 +67,7 @@ public class UnknownCartAddressInterface extends AbstractResponse<UnknownCartAdd
                 case "country": {
                     CartAddressCountry optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CartAddressCountry(jsonAsObject(field.getValue(), key));
+                        optional1 = new CartAddressCountry(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -115,7 +122,7 @@ public class UnknownCartAddressInterface extends AbstractResponse<UnknownCartAdd
                 case "region": {
                     CartAddressRegion optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CartAddressRegion(jsonAsObject(field.getValue(), key));
+                        optional1 = new CartAddressRegion(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -168,18 +175,22 @@ public class UnknownCartAddressInterface extends AbstractResponse<UnknownCartAdd
     }
 
     public static CartAddressInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static CartAddressInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "BillingCartAddress": {
-                return new BillingCartAddress(fields);
+                return new BillingCartAddress(fields, ignoreUnknownFields);
             }
 
             case "ShippingCartAddress": {
-                return new ShippingCartAddress(fields);
+                return new ShippingCartAddress(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownCartAddressInterface(fields);
+                return new UnknownCartAddressInterface(fields, ignoreUnknownFields);
             }
         }
     }

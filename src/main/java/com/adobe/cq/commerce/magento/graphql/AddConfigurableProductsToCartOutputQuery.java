@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class AddConfigurableProductsToCartOutputQuery extends AbstractQuery<AddConfigurableProductsToCartOutputQuery> {
-    AddConfigurableProductsToCartOutputQuery(StringBuilder _queryBuilder) {
+    public AddConfigurableProductsToCartOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

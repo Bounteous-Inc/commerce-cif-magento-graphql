@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * CustomerAddress contains detailed information about a customer&#39;s billing and shipping addresses
  */
 public class CustomerAddressQuery extends AbstractQuery<CustomerAddressQuery> {
-    CustomerAddressQuery(StringBuilder _queryBuilder) {
+    public CustomerAddressQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

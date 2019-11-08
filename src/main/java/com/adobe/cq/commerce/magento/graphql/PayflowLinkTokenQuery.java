@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Payments Advanced payment methods.
  */
 public class PayflowLinkTokenQuery extends AbstractQuery<PayflowLinkTokenQuery> {
-    PayflowLinkTokenQuery(StringBuilder _queryBuilder) {
+    public PayflowLinkTokenQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

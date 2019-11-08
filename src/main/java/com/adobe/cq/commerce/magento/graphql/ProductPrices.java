@@ -31,6 +31,13 @@ public class ProductPrices extends AbstractResponse<ProductPrices> {
     }
 
     public ProductPrices(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public ProductPrices(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -38,7 +45,7 @@ public class ProductPrices extends AbstractResponse<ProductPrices> {
                 case "maximalPrice": {
                     Price optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Price(jsonAsObject(field.getValue(), key));
+                        optional1 = new Price(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -49,7 +56,7 @@ public class ProductPrices extends AbstractResponse<ProductPrices> {
                 case "minimalPrice": {
                     Price optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Price(jsonAsObject(field.getValue(), key));
+                        optional1 = new Price(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -60,7 +67,7 @@ public class ProductPrices extends AbstractResponse<ProductPrices> {
                 case "regularPrice": {
                     Price optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Price(jsonAsObject(field.getValue(), key));
+                        optional1 = new Price(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

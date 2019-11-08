@@ -29,6 +29,13 @@ public class Mutation extends AbstractResponse<Mutation> {
     }
 
     public Mutation(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public Mutation(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -36,7 +43,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "addConfigurableProductsToCart": {
                     AddConfigurableProductsToCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new AddConfigurableProductsToCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new AddConfigurableProductsToCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -47,7 +54,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "addSimpleProductsToCart": {
                     AddSimpleProductsToCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new AddSimpleProductsToCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new AddSimpleProductsToCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -58,7 +65,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "addVirtualProductsToCart": {
                     AddVirtualProductsToCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new AddVirtualProductsToCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new AddVirtualProductsToCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -69,7 +76,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "applyCouponToCart": {
                     ApplyCouponToCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ApplyCouponToCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new ApplyCouponToCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -80,7 +87,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "changeCustomerPassword": {
                     Customer optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Customer(jsonAsObject(field.getValue(), key));
+                        optional1 = new Customer(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -97,7 +104,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "createCustomer": {
                     CustomerOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -108,7 +115,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "createCustomerAddress": {
                     CustomerAddress optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerAddress(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerAddress(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -130,7 +137,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "createPayflowProToken": {
                     PayflowProToken optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new PayflowProToken(jsonAsObject(field.getValue(), key));
+                        optional1 = new PayflowProToken(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -141,7 +148,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "createPaypalExpressToken": {
                     PaypalExpressToken optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new PaypalExpressToken(jsonAsObject(field.getValue(), key));
+                        optional1 = new PaypalExpressToken(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -163,7 +170,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "deletePaymentToken": {
                     DeletePaymentTokenOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new DeletePaymentTokenOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new DeletePaymentTokenOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -174,7 +181,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "generateCustomerToken": {
                     CustomerToken optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerToken(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerToken(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -185,7 +192,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "handlePayflowProResponse": {
                     PayflowProResponseOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new PayflowProResponseOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new PayflowProResponseOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -196,7 +203,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "placeOrder": {
                     PlaceOrderOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new PlaceOrderOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new PlaceOrderOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -207,7 +214,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "removeCouponFromCart": {
                     RemoveCouponFromCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new RemoveCouponFromCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new RemoveCouponFromCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -218,7 +225,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "removeItemFromCart": {
                     RemoveItemFromCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new RemoveItemFromCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new RemoveItemFromCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -229,7 +236,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "revokeCustomerToken": {
                     RevokeCustomerTokenOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new RevokeCustomerTokenOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new RevokeCustomerTokenOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -240,7 +247,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "sendEmailToFriend": {
                     SendEmailToFriendOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SendEmailToFriendOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new SendEmailToFriendOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -251,7 +258,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "setBillingAddressOnCart": {
                     SetBillingAddressOnCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SetBillingAddressOnCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new SetBillingAddressOnCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -262,7 +269,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "setGuestEmailOnCart": {
                     SetGuestEmailOnCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SetGuestEmailOnCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new SetGuestEmailOnCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -273,7 +280,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "setPaymentMethodAndPlaceOrder": {
                     PlaceOrderOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new PlaceOrderOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new PlaceOrderOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -284,7 +291,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "setPaymentMethodOnCart": {
                     SetPaymentMethodOnCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SetPaymentMethodOnCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new SetPaymentMethodOnCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -295,7 +302,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "setShippingAddressesOnCart": {
                     SetShippingAddressesOnCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SetShippingAddressesOnCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new SetShippingAddressesOnCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -306,7 +313,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "setShippingMethodsOnCart": {
                     SetShippingMethodsOnCartOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SetShippingMethodsOnCartOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new SetShippingMethodsOnCartOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -317,7 +324,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "updateCartItems": {
                     UpdateCartItemsOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new UpdateCartItemsOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new UpdateCartItemsOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -328,7 +335,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "updateCustomer": {
                     CustomerOutput optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerOutput(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerOutput(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -339,7 +346,7 @@ public class Mutation extends AbstractResponse<Mutation> {
                 case "updateCustomerAddress": {
                     CustomerAddress optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerAddress(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerAddress(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

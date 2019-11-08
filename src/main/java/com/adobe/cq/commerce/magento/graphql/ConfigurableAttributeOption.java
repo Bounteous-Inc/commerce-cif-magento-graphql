@@ -30,6 +30,13 @@ public class ConfigurableAttributeOption extends AbstractResponse<ConfigurableAt
     }
 
     public ConfigurableAttributeOption(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public ConfigurableAttributeOption(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);

@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * picker.
  */
 public class CustomizableFileValueQuery extends AbstractQuery<CustomizableFileValueQuery> {
-    CustomizableFileValueQuery(StringBuilder _queryBuilder) {
+    public CustomizableFileValueQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

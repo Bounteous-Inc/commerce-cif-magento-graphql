@@ -29,6 +29,13 @@ public class UnknownCartItemInterface extends AbstractResponse<UnknownCartItemIn
     }
 
     public UnknownCartItemInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownCartItemInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -40,7 +47,7 @@ public class UnknownCartItemInterface extends AbstractResponse<UnknownCartItemIn
                 }
 
                 case "product": {
-                    responseData.put(key, UnknownProductInterface.create(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, UnknownProductInterface.create(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }
@@ -64,22 +71,26 @@ public class UnknownCartItemInterface extends AbstractResponse<UnknownCartItemIn
     }
 
     public static CartItemInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static CartItemInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "ConfigurableCartItem": {
-                return new ConfigurableCartItem(fields);
+                return new ConfigurableCartItem(fields, ignoreUnknownFields);
             }
 
             case "SimpleCartItem": {
-                return new SimpleCartItem(fields);
+                return new SimpleCartItem(fields, ignoreUnknownFields);
             }
 
             case "VirtualCartItem": {
-                return new VirtualCartItem(fields);
+                return new VirtualCartItem(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownCartItemInterface(fields);
+                return new UnknownCartItemInterface(fields, ignoreUnknownFields);
             }
         }
     }

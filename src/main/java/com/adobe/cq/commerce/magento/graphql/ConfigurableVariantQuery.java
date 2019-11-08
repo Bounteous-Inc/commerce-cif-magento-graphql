@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * An array containing all the simple product variants of a configurable product
  */
 public class ConfigurableVariantQuery extends AbstractQuery<ConfigurableVariantQuery> {
-    ConfigurableVariantQuery(StringBuilder _queryBuilder) {
+    public ConfigurableVariantQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

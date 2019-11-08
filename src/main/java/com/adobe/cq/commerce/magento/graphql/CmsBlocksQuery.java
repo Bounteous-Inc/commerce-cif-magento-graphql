@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * CMS blocks information
  */
 public class CmsBlocksQuery extends AbstractQuery<CmsBlocksQuery> {
-    CmsBlocksQuery(StringBuilder _queryBuilder) {
+    public CmsBlocksQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

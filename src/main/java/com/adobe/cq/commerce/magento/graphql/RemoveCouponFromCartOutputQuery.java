@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class RemoveCouponFromCartOutputQuery extends AbstractQuery<RemoveCouponFromCartOutputQuery> {
-    RemoveCouponFromCartOutputQuery(StringBuilder _queryBuilder) {
+    public RemoveCouponFromCartOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

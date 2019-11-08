@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * BundleProduct defines basic features of a bundle product and contains multiple BundleItems.
  */
 public class BundleProductQuery extends AbstractQuery<BundleProductQuery> {
-    BundleProductQuery(StringBuilder _queryBuilder) {
+    public BundleProductQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

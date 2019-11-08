@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * ConfigurableProduct defines basic features of a configurable product and its simple product variants
  */
 public class ConfigurableProductQuery extends AbstractQuery<ConfigurableProductQuery> {
-    ConfigurableProductQuery(StringBuilder _queryBuilder) {
+    public ConfigurableProductQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Simple Cart Item
  */
 public class SimpleCartItemQuery extends AbstractQuery<SimpleCartItemQuery> {
-    SimpleCartItemQuery(StringBuilder _queryBuilder) {
+    public SimpleCartItemQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

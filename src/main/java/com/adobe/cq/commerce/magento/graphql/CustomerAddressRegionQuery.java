@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * CustomerAddressRegion defines the customer&#39;s state or province
  */
 public class CustomerAddressRegionQuery extends AbstractQuery<CustomerAddressRegionQuery> {
-    CustomerAddressRegionQuery(StringBuilder _queryBuilder) {
+    public CustomerAddressRegionQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

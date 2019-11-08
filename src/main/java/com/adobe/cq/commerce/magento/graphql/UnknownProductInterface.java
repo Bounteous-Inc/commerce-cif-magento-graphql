@@ -32,6 +32,13 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
     }
 
     public UnknownProductInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownProductInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -65,7 +72,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CategoryInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownCategoryInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownCategoryInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -119,7 +126,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -136,7 +143,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                 case "description": {
                     ComplexTextValue optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key));
+                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -169,7 +176,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                 case "image": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -195,7 +202,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             MediaGalleryInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownMediaGalleryInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownMediaGalleryInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -216,7 +223,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             MediaGalleryEntry optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new MediaGalleryEntry(jsonAsObject(element1, key));
+                                optional2 = new MediaGalleryEntry(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -321,7 +328,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                 case "price": {
                     ProductPrices optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductPrices(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductPrices(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -336,7 +343,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductLinksInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductLinksInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductLinksInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -357,7 +364,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -374,7 +381,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                 case "short_description": {
                     ComplexTextValue optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key));
+                        optional1 = new ComplexTextValue(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -396,7 +403,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                 case "small_image": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -462,7 +469,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                 case "thumbnail": {
                     ProductImage optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key));
+                        optional1 = new ProductImage(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -488,7 +495,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductTierPrices optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new ProductTierPrices(jsonAsObject(element1, key));
+                                optional2 = new ProductTierPrices(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -531,7 +538,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ProductInterface optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key));
+                                optional2 = UnknownProductInterface.create(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -574,7 +581,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             UrlRewrite optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new UrlRewrite(jsonAsObject(element1, key));
+                                optional2 = new UrlRewrite(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -595,7 +602,7 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             Website optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new Website(jsonAsObject(element1, key));
+                                optional2 = new Website(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -622,34 +629,38 @@ public class UnknownProductInterface extends AbstractResponse<UnknownProductInte
     }
 
     public static ProductInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static ProductInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "BundleProduct": {
-                return new BundleProduct(fields);
+                return new BundleProduct(fields, ignoreUnknownFields);
             }
 
             case "ConfigurableProduct": {
-                return new ConfigurableProduct(fields);
+                return new ConfigurableProduct(fields, ignoreUnknownFields);
             }
 
             case "DownloadableProduct": {
-                return new DownloadableProduct(fields);
+                return new DownloadableProduct(fields, ignoreUnknownFields);
             }
 
             case "GroupedProduct": {
-                return new GroupedProduct(fields);
+                return new GroupedProduct(fields, ignoreUnknownFields);
             }
 
             case "SimpleProduct": {
-                return new SimpleProduct(fields);
+                return new SimpleProduct(fields, ignoreUnknownFields);
             }
 
             case "VirtualProduct": {
-                return new VirtualProduct(fields);
+                return new VirtualProduct(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownProductInterface(fields);
+                return new UnknownProductInterface(fields, ignoreUnknownFields);
             }
         }
     }

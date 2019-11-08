@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * Product image information. Contains the image URL and label.
  */
 public class ProductImageQuery extends AbstractQuery<ProductImageQuery> {
-    ProductImageQuery(StringBuilder _queryBuilder) {
+    public ProductImageQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

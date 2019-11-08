@@ -29,6 +29,13 @@ public class UnknownLayerFilterItemInterface extends AbstractResponse<UnknownLay
     }
 
     public UnknownLayerFilterItemInterface(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public UnknownLayerFilterItemInterface(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -79,18 +86,22 @@ public class UnknownLayerFilterItemInterface extends AbstractResponse<UnknownLay
     }
 
     public static LayerFilterItemInterface create(JsonObject fields) throws SchemaViolationError {
+        return create(fields, false);
+    }
+
+    public static LayerFilterItemInterface create(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
         String typeName = fields.getAsJsonPrimitive("__typename").getAsString();
         switch (typeName) {
             case "LayerFilterItem": {
-                return new LayerFilterItem(fields);
+                return new LayerFilterItem(fields, ignoreUnknownFields);
             }
 
             case "SwatchLayerFilterItem": {
-                return new SwatchLayerFilterItem(fields);
+                return new SwatchLayerFilterItem(fields, ignoreUnknownFields);
             }
 
             default: {
-                return new UnknownLayerFilterItemInterface(fields);
+                return new UnknownLayerFilterItemInterface(fields, ignoreUnknownFields);
             }
         }
     }

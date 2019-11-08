@@ -31,12 +31,19 @@ public class CartDiscount extends AbstractResponse<CartDiscount> {
     }
 
     public CartDiscount(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CartDiscount(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
             switch (fieldName) {
                 case "amount": {
-                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }

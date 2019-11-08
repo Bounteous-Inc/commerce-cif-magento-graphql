@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CustomerDownloadableProductsQuery extends AbstractQuery<CustomerDownloadableProductsQuery> {
-    CustomerDownloadableProductsQuery(StringBuilder _queryBuilder) {
+    public CustomerDownloadableProductsQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

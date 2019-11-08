@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * multiselect.
  */
 public class CustomizableMultipleValueQuery extends AbstractQuery<CustomizableMultipleValueQuery> {
-    CustomizableMultipleValueQuery(StringBuilder _queryBuilder) {
+    public CustomizableMultipleValueQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

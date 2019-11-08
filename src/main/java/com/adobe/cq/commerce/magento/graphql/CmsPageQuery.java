@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * CMS page defines all CMS page information
  */
 public class CmsPageQuery extends AbstractQuery<CmsPageQuery> {
-    CmsPageQuery(StringBuilder _queryBuilder) {
+    public CmsPageQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

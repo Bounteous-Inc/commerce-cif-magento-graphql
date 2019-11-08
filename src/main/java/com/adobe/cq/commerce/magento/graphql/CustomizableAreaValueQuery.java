@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * area.
  */
 public class CustomizableAreaValueQuery extends AbstractQuery<CustomizableAreaValueQuery> {
-    CustomizableAreaValueQuery(StringBuilder _queryBuilder) {
+    public CustomizableAreaValueQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

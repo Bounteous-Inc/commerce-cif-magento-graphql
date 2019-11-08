@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * EntityUrl is an output object containing the `id`, `relative_url`, and `type` attributes
  */
 public class EntityUrlQuery extends AbstractQuery<EntityUrlQuery> {
-    EntityUrlQuery(StringBuilder _queryBuilder) {
+    public EntityUrlQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

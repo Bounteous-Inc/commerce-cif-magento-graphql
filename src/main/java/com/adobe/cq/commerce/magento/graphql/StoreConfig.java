@@ -29,6 +29,13 @@ public class StoreConfig extends AbstractResponse<StoreConfig> {
     }
 
     public StoreConfig(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public StoreConfig(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);

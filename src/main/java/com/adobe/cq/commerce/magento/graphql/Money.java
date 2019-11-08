@@ -29,6 +29,13 @@ public class Money extends AbstractResponse<Money> {
     }
 
     public Money(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public Money(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);

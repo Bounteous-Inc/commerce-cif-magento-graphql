@@ -30,6 +30,13 @@ public class CustomizableDateOption extends AbstractResponse<CustomizableDateOpt
     }
 
     public CustomizableDateOption(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CustomizableDateOption(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -92,7 +99,7 @@ public class CustomizableDateOption extends AbstractResponse<CustomizableDateOpt
                 case "value": {
                     CustomizableDateValue optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomizableDateValue(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomizableDateValue(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

@@ -29,6 +29,13 @@ public class SelectedShippingMethod extends AbstractResponse<SelectedShippingMet
     }
 
     public SelectedShippingMethod(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public SelectedShippingMethod(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -36,7 +43,7 @@ public class SelectedShippingMethod extends AbstractResponse<SelectedShippingMet
                 case "amount": {
                     Money optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Money(jsonAsObject(field.getValue(), key));
+                        optional1 = new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -47,7 +54,7 @@ public class SelectedShippingMethod extends AbstractResponse<SelectedShippingMet
                 case "base_amount": {
                     Money optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Money(jsonAsObject(field.getValue(), key));
+                        optional1 = new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

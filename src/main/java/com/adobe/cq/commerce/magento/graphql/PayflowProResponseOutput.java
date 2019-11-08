@@ -29,12 +29,19 @@ public class PayflowProResponseOutput extends AbstractResponse<PayflowProRespons
     }
 
     public PayflowProResponseOutput(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public PayflowProResponseOutput(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
             switch (fieldName) {
                 case "cart": {
-                    responseData.put(key, new Cart(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new Cart(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * SearchResultPageInfo provides navigation for the query response
  */
 public class SearchResultPageInfoQuery extends AbstractQuery<SearchResultPageInfoQuery> {
-    SearchResultPageInfoQuery(StringBuilder _queryBuilder) {
+    public SearchResultPageInfoQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

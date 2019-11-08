@@ -31,6 +31,13 @@ public class CustomerAddress extends AbstractResponse<CustomerAddress> {
     }
 
     public CustomerAddress(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CustomerAddress(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -75,7 +82,7 @@ public class CustomerAddress extends AbstractResponse<CustomerAddress> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CustomerAddressAttribute optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new CustomerAddressAttribute(jsonAsObject(element1, key));
+                                optional2 = new CustomerAddressAttribute(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -129,7 +136,7 @@ public class CustomerAddress extends AbstractResponse<CustomerAddress> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CustomerAddressAttribute optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new CustomerAddressAttribute(jsonAsObject(element1, key));
+                                optional2 = new CustomerAddressAttribute(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -223,7 +230,7 @@ public class CustomerAddress extends AbstractResponse<CustomerAddress> {
                 case "region": {
                     CustomerAddressRegion optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CustomerAddressRegion(jsonAsObject(field.getValue(), key));
+                        optional1 = new CustomerAddressRegion(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

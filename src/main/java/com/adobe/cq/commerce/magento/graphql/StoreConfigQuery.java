@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The type contains information about a store config
  */
 public class StoreConfigQuery extends AbstractQuery<StoreConfigQuery> {
-    StoreConfigQuery(StringBuilder _queryBuilder) {
+    public StoreConfigQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

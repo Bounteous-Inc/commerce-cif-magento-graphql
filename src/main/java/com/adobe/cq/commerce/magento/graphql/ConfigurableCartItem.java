@@ -31,6 +31,13 @@ public class ConfigurableCartItem extends AbstractResponse<ConfigurableCartItem>
     }
 
     public ConfigurableCartItem(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public ConfigurableCartItem(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -40,7 +47,7 @@ public class ConfigurableCartItem extends AbstractResponse<ConfigurableCartItem>
                     for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                         SelectedConfigurableOption optional2 = null;
                         if (!element1.isJsonNull()) {
-                            optional2 = new SelectedConfigurableOption(jsonAsObject(element1, key));
+                            optional2 = new SelectedConfigurableOption(jsonAsObject(element1, key), ignoreUnknownFields);
                         }
 
                         list1.add(optional2);
@@ -56,7 +63,7 @@ public class ConfigurableCartItem extends AbstractResponse<ConfigurableCartItem>
                     for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                         SelectedCustomizableOption optional2 = null;
                         if (!element1.isJsonNull()) {
-                            optional2 = new SelectedCustomizableOption(jsonAsObject(element1, key));
+                            optional2 = new SelectedCustomizableOption(jsonAsObject(element1, key), ignoreUnknownFields);
                         }
 
                         list1.add(optional2);
@@ -74,7 +81,7 @@ public class ConfigurableCartItem extends AbstractResponse<ConfigurableCartItem>
                 }
 
                 case "product": {
-                    responseData.put(key, UnknownProductInterface.create(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, UnknownProductInterface.create(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }

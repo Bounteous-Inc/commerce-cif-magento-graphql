@@ -31,6 +31,13 @@ public class ConfigurableVariant extends AbstractResponse<ConfigurableVariant> {
     }
 
     public ConfigurableVariant(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public ConfigurableVariant(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -42,7 +49,7 @@ public class ConfigurableVariant extends AbstractResponse<ConfigurableVariant> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             ConfigurableAttributeOption optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new ConfigurableAttributeOption(jsonAsObject(element1, key));
+                                optional2 = new ConfigurableAttributeOption(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -59,7 +66,7 @@ public class ConfigurableVariant extends AbstractResponse<ConfigurableVariant> {
                 case "product": {
                     SimpleProduct optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new SimpleProduct(jsonAsObject(field.getValue(), key));
+                        optional1 = new SimpleProduct(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

@@ -31,6 +31,13 @@ public class BundleItem extends AbstractResponse<BundleItem> {
     }
 
     public BundleItem(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public BundleItem(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -53,7 +60,7 @@ public class BundleItem extends AbstractResponse<BundleItem> {
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             BundleItemOption optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new BundleItemOption(jsonAsObject(element1, key));
+                                optional2 = new BundleItemOption(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);

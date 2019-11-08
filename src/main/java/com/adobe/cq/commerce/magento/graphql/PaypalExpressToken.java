@@ -30,6 +30,13 @@ public class PaypalExpressToken extends AbstractResponse<PaypalExpressToken> {
     }
 
     public PaypalExpressToken(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public PaypalExpressToken(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -37,7 +44,7 @@ public class PaypalExpressToken extends AbstractResponse<PaypalExpressToken> {
                 case "paypal_urls": {
                     PaypalExpressUrlList optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new PaypalExpressUrlList(jsonAsObject(field.getValue(), key));
+                        optional1 = new PaypalExpressUrlList(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

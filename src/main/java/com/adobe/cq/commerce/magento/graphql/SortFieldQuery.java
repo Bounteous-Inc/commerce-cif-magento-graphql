@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SortFieldQuery extends AbstractQuery<SortFieldQuery> {
-    SortFieldQuery(StringBuilder _queryBuilder) {
+    public SortFieldQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

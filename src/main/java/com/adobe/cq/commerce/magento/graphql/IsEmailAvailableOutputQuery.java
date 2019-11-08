@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class IsEmailAvailableOutputQuery extends AbstractQuery<IsEmailAvailableOutputQuery> {
-    IsEmailAvailableOutputQuery(StringBuilder _queryBuilder) {
+    public IsEmailAvailableOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

@@ -31,6 +31,13 @@ public class CustomerDownloadableProducts extends AbstractResponse<CustomerDownl
     }
 
     public CustomerDownloadableProducts(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CustomerDownloadableProducts(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -42,7 +49,7 @@ public class CustomerDownloadableProducts extends AbstractResponse<CustomerDownl
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CustomerDownloadableProduct optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new CustomerDownloadableProduct(jsonAsObject(element1, key));
+                                optional2 = new CustomerDownloadableProduct(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);

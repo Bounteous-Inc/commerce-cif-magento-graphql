@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class LayerFilterItemQuery extends AbstractQuery<LayerFilterItemQuery> {
-    LayerFilterItemQuery(StringBuilder _queryBuilder) {
+    public LayerFilterItemQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

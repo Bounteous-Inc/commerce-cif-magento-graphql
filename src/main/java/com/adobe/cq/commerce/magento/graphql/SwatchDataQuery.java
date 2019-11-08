@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SwatchDataQuery extends AbstractQuery<SwatchDataQuery> {
-    SwatchDataQuery(StringBuilder _queryBuilder) {
+    public SwatchDataQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CustomerTokenQuery extends AbstractQuery<CustomerTokenQuery> {
-    CustomerTokenQuery(StringBuilder _queryBuilder) {
+    public CustomerTokenQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

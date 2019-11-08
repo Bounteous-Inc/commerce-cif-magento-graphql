@@ -23,7 +23,7 @@ import com.shopify.graphql.support.Arguments;
  * 
  */
 public class QueryQuery extends AbstractQuery<QueryQuery> {
-    QueryQuery(StringBuilder _queryBuilder) {
+    public QueryQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class CountryQuery extends AbstractQuery<CountryQuery> {
-    CountryQuery(StringBuilder _queryBuilder) {
+    public CountryQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

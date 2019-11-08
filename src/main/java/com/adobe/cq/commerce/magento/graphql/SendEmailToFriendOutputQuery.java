@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SendEmailToFriendOutputQuery extends AbstractQuery<SendEmailToFriendOutputQuery> {
-    SendEmailToFriendOutputQuery(StringBuilder _queryBuilder) {
+    public SendEmailToFriendOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

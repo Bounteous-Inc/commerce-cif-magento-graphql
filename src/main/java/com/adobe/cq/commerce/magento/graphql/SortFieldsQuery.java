@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * SortFields contains a default value for sort fields and all available sort fields.
  */
 public class SortFieldsQuery extends AbstractQuery<SortFieldsQuery> {
-    SortFieldsQuery(StringBuilder _queryBuilder) {
+    public SortFieldsQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

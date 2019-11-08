@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * of radio buttons.
  */
 public class CustomizableRadioValueQuery extends AbstractQuery<CustomizableRadioValueQuery> {
-    CustomizableRadioValueQuery(StringBuilder _queryBuilder) {
+    public CustomizableRadioValueQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

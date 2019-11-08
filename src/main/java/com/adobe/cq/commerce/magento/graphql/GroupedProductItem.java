@@ -29,6 +29,13 @@ public class GroupedProductItem extends AbstractResponse<GroupedProductItem> {
     }
 
     public GroupedProductItem(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public GroupedProductItem(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -47,7 +54,7 @@ public class GroupedProductItem extends AbstractResponse<GroupedProductItem> {
                 case "product": {
                     ProductInterface optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = UnknownProductInterface.create(jsonAsObject(field.getValue(), key));
+                        optional1 = UnknownProductInterface.create(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

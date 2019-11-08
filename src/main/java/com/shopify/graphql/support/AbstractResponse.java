@@ -38,7 +38,13 @@ import com.google.gson.JsonObject;
 public abstract class AbstractResponse<T extends AbstractResponse> implements Serializable {
     public final HashMap<String, Object> responseData = new HashMap<>();
     public final HashMap<String, Object> optimisticData = new HashMap<>();
+    protected JsonObject fields;
+    protected boolean ignoreUnknownFields;
     private String aliasSuffix = null;
+
+    public JsonObject getFields() {
+        return fields;
+    }
 
     @SuppressWarnings("unchecked")
     public T withAlias(String aliasSuffix) {
@@ -170,7 +176,11 @@ public abstract class AbstractResponse<T extends AbstractResponse> implements Se
      */
     protected void readCustomField(String fieldName, JsonElement element) throws SchemaViolationError {
         if (!fieldName.endsWith(AbstractQuery.CUSTOM_FIELD_LABEL)) {
-            throw new SchemaViolationError(this, fieldName, element);
+            if (ignoreUnknownFields) {
+                return;
+            } else {
+                throw new SchemaViolationError(this, fieldName, element);
+            }
         }
 
         int end = fieldName.lastIndexOf(AbstractQuery.CUSTOM_FIELD_LABEL);

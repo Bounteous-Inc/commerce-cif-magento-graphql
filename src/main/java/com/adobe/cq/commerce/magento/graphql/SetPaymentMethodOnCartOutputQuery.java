@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class SetPaymentMethodOnCartOutputQuery extends AbstractQuery<SetPaymentMethodOnCartOutputQuery> {
-    SetPaymentMethodOnCartOutputQuery(StringBuilder _queryBuilder) {
+    public SetPaymentMethodOnCartOutputQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

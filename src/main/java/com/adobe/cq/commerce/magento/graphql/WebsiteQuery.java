@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * The type contains information about a website
  */
 public class WebsiteQuery extends AbstractQuery<WebsiteQuery> {
-    WebsiteQuery(StringBuilder _queryBuilder) {
+    public WebsiteQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

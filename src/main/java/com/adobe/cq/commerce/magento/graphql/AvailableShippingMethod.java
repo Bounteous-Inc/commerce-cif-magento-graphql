@@ -29,12 +29,19 @@ public class AvailableShippingMethod extends AbstractResponse<AvailableShippingM
     }
 
     public AvailableShippingMethod(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public AvailableShippingMethod(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
             switch (fieldName) {
                 case "amount": {
-                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }
@@ -48,7 +55,7 @@ public class AvailableShippingMethod extends AbstractResponse<AvailableShippingM
                 case "base_amount": {
                     Money optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new Money(jsonAsObject(field.getValue(), key));
+                        optional1 = new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);
@@ -102,13 +109,13 @@ public class AvailableShippingMethod extends AbstractResponse<AvailableShippingM
                 }
 
                 case "price_excl_tax": {
-                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }
 
                 case "price_incl_tax": {
-                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key)));
+                    responseData.put(key, new Money(jsonAsObject(field.getValue(), key), ignoreUnknownFields));
 
                     break;
                 }

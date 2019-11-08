@@ -21,7 +21,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * adjustment to apply, and whether the item is included or excluded from the adjustment.
  */
 public class PriceAdjustmentQuery extends AbstractQuery<PriceAdjustmentQuery> {
-    PriceAdjustmentQuery(StringBuilder _queryBuilder) {
+    public PriceAdjustmentQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 

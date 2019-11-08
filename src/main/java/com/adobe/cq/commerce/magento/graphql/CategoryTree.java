@@ -31,6 +31,13 @@ public class CategoryTree extends AbstractResponse<CategoryTree> implements Cate
     }
 
     public CategoryTree(JsonObject fields) throws SchemaViolationError {
+        this(fields, false);
+    }
+
+    public CategoryTree(JsonObject fields, boolean ignoreUnknownFields) throws SchemaViolationError {
+        this.fields = fields;
+        this.ignoreUnknownFields = ignoreUnknownFields;
+
         for (Map.Entry<String, JsonElement> field : fields.entrySet()) {
             String key = field.getKey();
             String fieldName = getFieldName(key);
@@ -63,7 +70,7 @@ public class CategoryTree extends AbstractResponse<CategoryTree> implements Cate
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             Breadcrumb optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new Breadcrumb(jsonAsObject(element1, key));
+                                optional2 = new Breadcrumb(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -84,7 +91,7 @@ public class CategoryTree extends AbstractResponse<CategoryTree> implements Cate
                         for (JsonElement element1 : jsonAsArray(field.getValue(), key)) {
                             CategoryTree optional2 = null;
                             if (!element1.isJsonNull()) {
-                                optional2 = new CategoryTree(jsonAsObject(element1, key));
+                                optional2 = new CategoryTree(jsonAsObject(element1, key), ignoreUnknownFields);
                             }
 
                             list1.add(optional2);
@@ -321,7 +328,7 @@ public class CategoryTree extends AbstractResponse<CategoryTree> implements Cate
                 case "products": {
                     CategoryProducts optional1 = null;
                     if (!field.getValue().isJsonNull()) {
-                        optional1 = new CategoryProducts(jsonAsObject(field.getValue(), key));
+                        optional1 = new CategoryProducts(jsonAsObject(field.getValue(), key), ignoreUnknownFields);
                     }
 
                     responseData.put(key, optional1);

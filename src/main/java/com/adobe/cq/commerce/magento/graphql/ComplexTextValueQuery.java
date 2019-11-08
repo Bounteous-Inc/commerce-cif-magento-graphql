@@ -20,7 +20,7 @@ import com.shopify.graphql.support.AbstractQuery;
  * 
  */
 public class ComplexTextValueQuery extends AbstractQuery<ComplexTextValueQuery> {
-    ComplexTextValueQuery(StringBuilder _queryBuilder) {
+    public ComplexTextValueQuery(StringBuilder _queryBuilder) {
         super(_queryBuilder);
     }
 
